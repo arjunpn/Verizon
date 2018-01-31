@@ -48,9 +48,12 @@ public class GenericClass {
 		String result = null;
 		File scfile = driver.getScreenshotAs(OutputType.FILE);
 		ITesseract instance = new Tesseract();
+		String dllpath=BaseClass.sDirpath+"\\dll";
+		System.setProperty("jna.library.path", dllpath);
 		try {
 			result = instance.doOCR(scfile);
 		} catch (TesseractException e) {
+			
 			
 			throw e;
 		}

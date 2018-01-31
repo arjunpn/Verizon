@@ -18,7 +18,7 @@ public class RfcPage {
 	public WebElement favoriteIcon;
 	
 	@FindBy(xpath="//android.widget.ImageView[@index='3']")
-	public WebElement optionsMenu;
+	public WebElement optionsMenuIcon;
 	
 	@FindBy(xpath="//android.widget.TextView[@text='Save']")
 	public WebElement saveOption;

@@ -40,6 +40,8 @@ public class SavedPage {
 			WebElement webElement = (WebElement) iterator.next();
 			if(webElement.getText().contains(savedPageTitle))
 			{
+				System.out.println(webElement.getText());
+				System.out.println(savedPageTitle);
 				return true;
 			}
 			

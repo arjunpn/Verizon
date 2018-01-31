@@ -35,15 +35,15 @@ public class SearchPage {
 	@FindBy(xpath="//android.widget.TextView[@resource-id='com.verzitex.android.pocketrfc:id/rfc_id']")
 	public List<WebElement> SearchResultRfcNums;
 	
-	public String clickOnRfc(String rfcCriteria)
+	public WebElement retreiveRfc(String rfcCriteria)
 	{
 		for (Iterator<WebElement> iterator = rfcs.iterator(); iterator.hasNext();) {
 			WebElement webElement = (WebElement) iterator.next();
 			String x=webElement.getText();
 			if(x.contains(rfcCriteria)){
-				System.out.println(webElement.getText());
-				webElement.click();
-				return x;
+				//System.out.println(webElement.getText());
+				//webElement.click();
+				return webElement;
 			}
 		}
 		return null;
