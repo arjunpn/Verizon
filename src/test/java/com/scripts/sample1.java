@@ -50,10 +50,10 @@ public class sample1 extends BaseClass {
 	wait.until(ExpectedConditions.visibilityOf(sp.searchTB));
 	Assert.assertTrue(sp.searchTB.isDisplayed(), "The search text box is not displayed");
 	NXGReports.addStep("The search text box is displayed", LogAs.PASSED, null);
-	sp.searchTB.sendKeys("http");
+	sp.searchTB.sendKeys(GenericClass.getData(1, 1, "verizon_pocketRFC"));
 	GenericClass.clickOnEnter(driver);
 	Thread.sleep(1000);
-	WebElement rfcTitle=sp.retreiveRfc("HTTP/1.0");
+	WebElement rfcTitle=sp.retreiveRfc(GenericClass.getData(1, 2, "verizon_pocketRFC"));
 	String text=rfcTitle.getText();
 	rfcTitle.click();
 	//String rfcID=sp.retreiveSelectedRfcNum(rfcTitle);
@@ -62,7 +62,7 @@ public class sample1 extends BaseClass {
 	NXGReports.addStep("Favorite Icon is displayed", LogAs.PASSED, null);
 	rp.favoriteIcon.click();
 	String favoriteAddToastMessage=GenericClass.verifyToastMessage(driver);
-	Assert.assertTrue(favoriteAddToastMessage.contains("RFC marked as favorite"), "'RFC marked as favorite' is not displayed");
+	Assert.assertTrue(favoriteAddToastMessage.contains(GenericClass.getData(1, 3, "verizon_pocketRFC")), "'RFC marked as favorite' is not displayed");
 	NXGReports.addStep("'RFC marked as favorite' is displayed", LogAs.PASSED, null);
 	Assert.assertTrue(rp.favoriteIcon.isEnabled(), "Favorite Icon is not selected");
 	NXGReports.addStep("Favorite Icon is selected", LogAs.PASSED, null);
@@ -77,7 +77,7 @@ public class sample1 extends BaseClass {
 	rp.AcceptPopupOption.click();
 	wait.until(ExpectedConditions.elementToBeClickable(rp.backIcon));
 	String SaveToastMessage=GenericClass.verifyToastMessage(driver);
-	Assert.assertTrue(SaveToastMessage.contains("Document saved to your downloads folder!"), "'Document saved to your downloads folder!' is not displayed");
+	Assert.assertTrue(SaveToastMessage.contains(GenericClass.getData(1, 4, "verizon_pocketRFC")), "'Document saved to your downloads folder!' is not displayed");
 	NXGReports.addStep("'Document saved to your downloads folder!' is displayed", LogAs.PASSED, null);
 	wait.until(ExpectedConditions.elementToBeClickable(rp.backIcon));
 	Assert.assertTrue(rp.backIcon.isDisplayed(), "RFC page Back icon is not displayed");
@@ -108,7 +108,7 @@ public class sample1 extends BaseClass {
 	rp.AcceptPopupOption.click();
 	wait.until(ExpectedConditions.elementToBeClickable(rp.backIcon));
 	String DeleteToastMessage=GenericClass.verifyToastMessage(driver);
-	Assert.assertTrue(DeleteToastMessage.contains("Document deleted from your downloads"), "'Document deleted from your downloads folder!' is not displayed");
+	Assert.assertTrue(DeleteToastMessage.contains(GenericClass.getData(1, 5, "verizon_pocketRFC")), "'Document deleted from your downloads folder!' is not displayed");
 	NXGReports.addStep("'Document deleted from your downloads folder!' is displayed", LogAs.PASSED, null);
 	
 	wait.until(ExpectedConditions.elementToBeClickable(rp.backIcon));

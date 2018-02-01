@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
@@ -20,7 +23,7 @@ import net.sourceforge.tess4j.TesseractException;
 
 public class GenericClass {
 	public static String configprop=BaseClass.sDirpath+"\\config.properties";
-	public static String readexcel=BaseClass.sDirpath+"\\Abof.xlsx";
+	public static String readexcel=BaseClass.sDirpath+"\\testdata\\input.xlsx";
 	static Dimension dSize;
 	
 	
@@ -62,6 +65,58 @@ public class GenericClass {
 	public static void clickOnEnter(AndroidDriver<?> driver)
 	{
 		driver.pressKeyCode(AndroidKeyCode.ENTER);
+	}
+	public static String getData(int rn, int cn, String sheetname) 
+	{
+		try
+		{
+			File file =new File(readexcel);
+			FileInputStream fis=new FileInputStream(file);
+			Workbook wb=WorkbookFactory.create(fis);
+			 org.apache.poi.ss.usermodel.Sheet sh = wb.getSheet(sheetname);
+			String data=sh.getRow(rn).getCell(cn).toString();
+			return data;
+		}
+		catch(Exception e)
+		{
+			return "";
+		}		
+	}
+	
+	//To get row count
+	public static int getRowCount(String path, String sheetName)
+	{
+		try
+		{
+			File file =new File(path);
+			FileInputStream fis=new FileInputStream(file);
+			Workbook wb=WorkbookFactory.create(fis);
+			Sheet sh = wb.getSheet(sheetName);
+			return sh.getLastRowNum();
+		}
+		catch(Exception e)
+		{
+			return 0;
+		}
+		
+	}
+	
+	//To get Cell count
+	public static short getCellCount(int rc, String path, String sheetName)
+	{
+		try
+		{
+			File file =new File(path);
+			FileInputStream fis=new FileInputStream(file);
+			Workbook wb=WorkbookFactory.create(fis);
+			Sheet sh=wb.getSheet(sheetName);
+			return sh.getRow(rc).getLastCellNum();
+		}
+		catch(Exception e)
+		{
+			return 0;
+		}
+		
 	}
 	
 
